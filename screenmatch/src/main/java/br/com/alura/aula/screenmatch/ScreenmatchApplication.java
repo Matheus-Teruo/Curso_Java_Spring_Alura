@@ -1,6 +1,6 @@
 package br.com.alura.aula.screenmatch;
 
-import br.com.alura.aula.screenmatch.principal.PrincipalChallengeCar;
+import br.com.alura.aula.screenmatch.principal.PrincipalChallengeVehicle;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +15,7 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws JsonProcessingException {
-		PrincipalChallengeCar principalChallengeCar = new PrincipalChallengeCar();
+		PrincipalChallengeVehicle principalChallengeCar = new PrincipalChallengeVehicle();
 		principalChallengeCar.escolheVeiculo();
 	}
 }

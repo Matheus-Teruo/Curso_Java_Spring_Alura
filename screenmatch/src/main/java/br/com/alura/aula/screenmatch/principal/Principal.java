@@ -18,8 +18,7 @@ public class Principal {
 
     public DadosSeries procuraSerie() throws JsonProcessingException {
         System.out.println("Digite a série que deseja procurar:");
-        String url = request.constroiUrlFilmesESeries(scan.next().replace(" ","+"));
-        String json = request.obterDados(url);
+        String json = request.constroiUrlFilmesESeries(scan.next().replace(" ","+"));
 
         DadosSeries dados = conversor.obterDados(json, DadosSeries.class);
         System.out.println(dados);
@@ -31,8 +30,7 @@ public class Principal {
 
         for (int i = 1; i <= serie.numeroTemporadas(); i++) {
             String parametro = serie.titulo().replace(" ","+") + "&season=" + i;
-            String url = request.constroiUrlFilmesESeries(parametro);
-            String json = request.obterDados(url);
+            String json = request.constroiUrlFilmesESeries(parametro);
             DadosTemporadas dados = conversor.obterDados(json, DadosTemporadas.class);
 
             listaTemporadas.add(dados);

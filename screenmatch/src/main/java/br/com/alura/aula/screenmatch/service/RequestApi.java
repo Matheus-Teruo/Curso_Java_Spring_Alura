@@ -1,6 +1,5 @@
 package br.com.alura.aula.screenmatch.service;
 
-import br.com.alura.aula.screenmatch.models.Veiculo.DadosAnos;
 import br.com.alura.aula.screenmatch.models.Veiculo.Veiculo;
 
 import java.io.IOException;
@@ -9,39 +8,38 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
 
 public class RequestApi {
 
     public String constroiUrlFilmesESeries(String parametro) {
-        return ConstantesRequest.BASE_PAGE_URL_SERIES_FILMES +
+        return obterDados(ConstantesRequest.BASE_PAGE_URL_SERIES_FILMES +
                 parametro +
-                ConstantesRequest.APIKEY;
+                ConstantesRequest.APIKEY);
     }
 
     public String constroiUrlVeiculo(Veiculo veiculo) {
-        return ConstantesRequest.BASE_PAGE_URL_CARROS +
+        return obterDados(ConstantesRequest.BASE_PAGE_URL_CARROS +
                 veiculo.getTipoVeiculo() +
-                ConstantesRequest.URL_MARCAS;
+                ConstantesRequest.URL_MARCAS);
     }
 
     public String constroiUrlMarca(Veiculo veiculo) {
-        return constroiUrlVeiculo(veiculo) + "/" +
+        return obterDados(constroiUrlVeiculo(veiculo) + "/" +
                 veiculo.getCodMarca() +
-                ConstantesRequest.URL_MODELOS;
+                ConstantesRequest.URL_MODELOS);
     }
 
     public String constroiUrlModelo(Veiculo veiculo) {
-        return constroiUrlMarca(veiculo) + "/" +
+        return obterDados(constroiUrlMarca(veiculo) + "/" +
                 veiculo.getCodModelo() +
-                ConstantesRequest.URL_ANOS;
+                ConstantesRequest.URL_ANOS);
     }
 
     public String constroiUrlAnos(Veiculo veiculo, String ano) {
-        return constroiUrlModelo(veiculo) + "/" + ano;
+        return obterDados(constroiUrlModelo(veiculo) + "/" + ano);
     }
 
-    public String obterDados(String endereco) {
+    private String obterDados(String endereco) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endereco))
                 .build();
