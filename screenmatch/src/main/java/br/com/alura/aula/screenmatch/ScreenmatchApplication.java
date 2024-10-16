@@ -1,6 +1,5 @@
 package br.com.alura.aula.screenmatch;
 
-import br.com.alura.aula.screenmatch.principal.PrincipalChallengeVehicle;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
