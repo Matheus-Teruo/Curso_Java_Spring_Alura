@@ -1,7 +1,9 @@
 package br.com.alura.aula.screenmatch.principal;
 
-import br.com.alura.aula.screenmatch.models.DadosSeries;
+import br.com.alura.aula.screenmatch.models.DadosFilme;
+import br.com.alura.aula.screenmatch.models.DadosSerie;
 import br.com.alura.aula.screenmatch.models.DadosTemporadas;
+import br.com.alura.aula.screenmatch.service.ConstantesRequest;
 import br.com.alura.aula.screenmatch.service.RequestApi;
 import br.com.alura.aula.screenmatch.service.ConverteDados;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -16,26 +18,30 @@ public class Principal {
     RequestApi request = new RequestApi();
     ConverteDados conversor = new ConverteDados();
 
-    public DadosSeries procuraSerie() throws JsonProcessingException {
-        System.out.println("Digite a série que deseja procurar:");
+    public DadosFilme procuraFilme() throws JsonProcessingException {
+        System.out.println("Digite o filme que deseja procurar:");
         String json = request.constroiUrlFilmesESeries(scan.next().replace(" ","+"));
-
-        DadosSeries dados = conversor.obterDados(json, DadosSeries.class);
-        System.out.println(dados);
+        DadosFilme dados = conversor.obterDados(json, DadosFilme.class);
         return dados;
     }
 
-    public List<DadosTemporadas> procuraTemporadas(DadosSeries serie) throws JsonProcessingException {
+    public DadosSerie procuraSerie() throws JsonProcessingException {
+        System.out.println("Digite a série que deseja procurar:");
+        String json = request.constroiUrlFilmesESeries(scan.next().replace(" ","+"));
+        DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
+        return dados;
+    }
+
+    public List<DadosTemporadas> procuraTemporadas(DadosSerie serie) throws JsonProcessingException {
         List<DadosTemporadas> listaTemporadas = new ArrayList<>();
 
         for (int i = 1; i <= serie.numeroTemporadas(); i++) {
-            String parametro = serie.titulo().replace(" ","+") + "&season=" + i;
+            String parametro = serie.titulo().toLowerCase().replace(" ","+") +
+                    ConstantesRequest.URL_EPISODIOS + i;
             String json = request.constroiUrlFilmesESeries(parametro);
             DadosTemporadas dados = conversor.obterDados(json, DadosTemporadas.class);
-
             listaTemporadas.add(dados);
         }
-        System.out.println(listaTemporadas);
         return listaTemporadas;
     }
 }
