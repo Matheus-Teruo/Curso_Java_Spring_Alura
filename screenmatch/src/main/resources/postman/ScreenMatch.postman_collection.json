@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "dfa3ab91-3adb-4b59-b661-b896f7c59ef2",
+		"name": "ScreenMatch",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38885305"
+	},
+	"item": [
+		{
+			"name": "Filme&Series",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.omdbapi.com/?t=lost&apikey=bf7529d6",
+					"protocol": "https",
+					"host": [
+						"www",
+						"omdbapi",
+						"com"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "t",
+							"value": "lost"
+						},
+						{
+							"key": "apikey",
+							"value": "bf7529d6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Temporadas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.omdbapi.com/?t=lost&season=1&apikey=bf7529d6",
+					"protocol": "https",
+					"host": [
+						"www",
+						"omdbapi",
+						"com"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "t",
+							"value": "lost"
+						},
+						{
+							"key": "season",
+							"value": "1"
+						},
+						{
+							"key": "apikey",
+							"value": "bf7529d6"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
