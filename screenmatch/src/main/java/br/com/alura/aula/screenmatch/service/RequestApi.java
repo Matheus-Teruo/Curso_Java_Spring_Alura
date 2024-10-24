@@ -10,9 +10,10 @@ import java.net.http.HttpResponse;
 public class RequestApi {
 
     public String constroiUrlFilmesESeries(String parametro) {
-        return obterDados(ConstantesRequest.BASE_PAGE_URL_SERIES_FILMES +
+        String url = ConstantesRequest.BASE_PAGE_URL_SERIES_FILMES +
                 parametro +
-                ConstantesRequest.APIKEY);
+                ConstantesRequest.APIKEY;
+        return obterDados(url);
     }
 
     private String obterDados(String endereco) {

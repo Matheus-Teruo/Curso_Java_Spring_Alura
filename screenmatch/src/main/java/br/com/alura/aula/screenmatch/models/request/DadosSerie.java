@@ -1,19 +1,17 @@
-package br.com.alura.aula.screenmatch.models;
+package br.com.alura.aula.screenmatch.models.request;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.text.DateFormat;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record DadosEpisodio(
+public record DadosSerie(
         @JsonAlias("Title")
         String titulo,
-        @JsonAlias("Released")
-        String dataLancamento,
-        @JsonAlias("Episode")
-        String episodio,
+        @JsonAlias("Genre")
+        String genero,
+        @JsonAlias("totalSeasons")
+        int numeroTemporadas,
         @JsonAlias("imdbRating")
-        String avaliacao
+        String avaliacaoImdb
 ) {
 }
